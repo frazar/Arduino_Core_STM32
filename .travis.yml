@@ -14,12 +14,15 @@
 ##############################################################################
 
 language: minimal
+sudo: true
 
 env:
   global:
     - ARDUINO_CLI_VERSION=latest
 
 before_install:
+  - # Install libc6-i386 library, as suggested in github.com/GrumpyOldPizza/arduino-STM32L4/issues/23
+  - sudo apt-get install libc6-i386
   - # Download arduino-cli binary
   - wget "https://downloads.arduino.cc/arduino-cli/arduino-cli_${ARDUINO_CLI_VERSION}_Linux_64bit.tar.gz"
   - tar xf "arduino-cli_${ARDUINO_CLI_VERSION}_Linux_64bit.tar.gz"
